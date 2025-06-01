@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Design | Kurti Customization</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Reusing styles from previous pages */
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .progress-container {
+        margin: 40px auto;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 80%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+      .review-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        padding: 40px;
+        margin-top: 30px;
+        display: flex;
+      }
+
+      .design-preview {
+        flex: 1;
+        padding-right: 30px;
+        border-right: 1px solid #e0d4c8;
+      }
+
+      .design-preview img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      .design-details {
+        flex: 1;
+        padding-left: 30px;
+      }
+
+      .detail-section {
+        margin-bottom: 20px;
+      }
+
+      .detail-section h3 {
+        color: #9c6644;
+        margin-bottom: 10px;
+      }
+
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        color: #7d5a50;
+      }
+
+      .detail-item-label {
+        font-weight: bold;
+      }
+
+      .estimated-price {
+        background-color: #f8f3ee;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .price {
+        font-size: 24px;
+        color: #9c6644;
+        font-weight: bold;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-outline:hover {
+        background-color: #9c6644;
+        color: white;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Review Your Design</h1>
+        <p class="subtitle">Double-check the details of your custom kurti</p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Upload</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Adjust</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Fabric</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">4</div>
+            <div class="step-label">Size</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">5</div>
+            <div class="step-label">Review</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="review-container">
+        <div class="design-preview">
+          <img id="previewImage" src="" alt="Custom Kurti Design" />
+        </div>
+        <div class="design-details">
+          <div class="detail-section">
+            <h3>Design Details</h3>
+            <div class="detail-item">
+              <span class="detail-item-label">Custom Design</span>
+              (... previous content continues)
+              <span id="designFileName">-</span>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Fabric Selection</h3>
+            <div class="detail-item">
+              <span class="detail-item-label">Fabric Type</span>
+              <span id="fabricTypeDisplay">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-item-label">Color</span>
+              <span id="fabricColorDisplay">-</span>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h3>Size & Fit</h3>
+            <div class="detail-item">
+              <span class="detail-item-label">Size</span>
+              <span id="sizeDisplay">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-item-label">Sleeve Length</span>
+              <span id="sleeveLengthDisplay">-</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-item-label">Neck Design</span>
+              <span id="neckDesignDisplay">-</span>
+            </div>
+          </div>
+
+          <div class="estimated-price">
+            <p>Estimated Total Price</p>
+            <div class="price" id="estimatedPrice">₹1,999</div>
+          </div>
+
+          <div style="text-align: center; margin-top: 30px">
+            <button class="btn" onclick="proceedToNextStep()">
+              Complete Order
+            </button>
+            <button class="btn btn-outline" onclick="goBack()">
+              Modify Design
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      let customizationData = JSON.parse(
+        localStorage.getItem("kurtiCustomization")
+      ) || {
+        neckDesign: "",
+        sleeveLength: "",
+        kurtiLength: "",
+        fabricType: "",
+        color: "",
+        size: "",
+        customImage: null,
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Populate design preview
+        if (customizationData.customImage) {
+          document.getElementById("previewImage").src =
+            customizationData.customImage.dataUrl;
+          document.getElementById("designFileName").textContent =
+            customizationData.customImage.name;
+        }
+
+        // Populate fabric details
+        document.getElementById("fabricTypeDisplay").textContent =
+          customizationData.fabricType || "-";
+        document.getElementById("fabricColorDisplay").textContent =
+          customizationData.color || "-";
+
+        // Populate size and fit details
+        document.getElementById("sizeDisplay").textContent =
+          customizationData.size || "-";
+        document.getElementById("sleeveLengthDisplay").textContent =
+          customizationData.sleeveLength || "-";
+        document.getElementById("neckDesignDisplay").textContent =
+          customizationData.neckDesign || "-";
+
+        // Calculate estimated price based on selections
+        calculateEstimatedPrice();
+      });
+
+      function calculateEstimatedPrice() {
+        let basePrice = 1500; // Base price for custom kurti
+
+        // Additional pricing logic
+        const priceModifiers = {
+          fabricType: {
+            Cotton: 0,
+            Silk: 500,
+            Khadi: 250,
+          },
+          size: {
+            XS: 0,
+            S: 100,
+            M: 200,
+            L: 300,
+          },
+          sleeveLength: {
+            Short: 0,
+            "Three-Quarter": 150,
+            Full: 250,
+          },
+          neckDesign: {
+            Round: 0,
+            "V-Neck": 100,
+            Boat: 150,
+          },
+        };
+
+        let totalPrice = basePrice;
+
+        // Add price modifiers
+        totalPrice +=
+          priceModifiers.fabricType[customizationData.fabricType] || 0;
+        totalPrice += priceModifiers.size[customizationData.size] || 0;
+        totalPrice +=
+          priceModifiers.sleeveLength[customizationData.sleeveLength] || 0;
+        totalPrice +=
+          priceModifiers.neckDesign[customizationData.neckDesign] || 0;
+
+        document.getElementById(
+          "estimatedPrice"
+        ).textContent = `₹${totalPrice.toLocaleString()}`;
+      }
+
+      function proceedToNextStep() {
+        document.querySelector(".progress-completed").style.width = "90%";
+        setTimeout(() => {
+          window.location.href = "/customization/complete";
+        }, 500);
+      }
+
+      function goBack() {
+        window.location.href = "/customization/size";
+      }
+    </script>
+  </body>
+</html>

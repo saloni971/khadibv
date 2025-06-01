@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Categories</title>
+    <link rel="stylesheet" href="/css/view2.css"> <!-- Linking External CSS -->
+</head>
+<body>
+    <header>
+        <h2>View Categories</h2>
+    </header>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category ID</th>
+                    <th>Category Name</th>
+                    <th>Category Image</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(category => { %>
+                    <tr>
+                        <td><%= category._id %></td>
+                        <td><%= category.name %></td>
+                        <td>
+                            <% if (category.image) { %>
+                                <img src="/images/<%= category.image %>" alt="<%= category.name %>" width="100">
+                            <% } else { %>
+                                No Image
+                            <% } %>
+                        </td>
+                        <td>
+                            <form action="/delete-category/<%= category._id %>" method="POST">
+                                <button type="submit" class="delete-btn">&#128465; Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="/edit-category/<%= category._id %>">
+                                <button class="edit-btn">&#9998; Edit</button>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

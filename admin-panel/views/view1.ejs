@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+    <link rel="stylesheet" href="/css/view1.css">
+    <script>
+       function filterTableCategory() {
+    const selectedCategory = document.getElementById("table-category-filter").value.trim().toLowerCase();
+    const rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        const categoryCell = row.querySelector(".product-category");
+        if (!categoryCell) return;
+
+        const categoryText = categoryCell.textContent.trim().toLowerCase(); // Normalize case and trim spaces
+
+        // Show all rows if "All" is selected, otherwise match the category
+        if (selectedCategory === "" || categoryText === selectedCategory) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header>
+        <h2>View Products</h2>
+    </header>
+
+    <!-- Category Filter Dropdown (Above Table) -->
+    <div>
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter" onchange="filterCategory()">
+            <option value="">All Categories</option>
+            <% categories.forEach(category => { %>
+                <option value="<%= category._id %>" <%= selectedCategory === category._id.toString() ? 'selected' : '' %>>
+                    <%= category.name %>
+                </option>
+            <% }) %>
+        </select>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Product Image</th>
+                    <th>Product Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    
+                    <!-- Category Dropdown Filter in Table Header -->
+                    <th>
+                        Product Category
+                        <select id="table-category-filter" onchange="filterTableCategory()">
+                            <option value="">All</option>
+                            <option value="Kurti">Kurti</option>
+                            <option value="Saree">Sarees</option>
+                            <option value="Bags">Bags</option>
+                            <option value="Bedsheets">Bedsheets</option>
+                            <option value="Uniforms">Uniforms</option>
+                            <option value="Pants">Pants</option>
+                        </select>
+                    </th>
+                    
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (products.length > 0) { %>
+                    <% products.forEach((product, index) => { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= product.name %></td>
+                            <td><img src="/images/<%= product.images[0] %>" alt="Product Image" width="50"></td>
+                            <td><%= product.description %></td>
+                            <td><%= product.price.toFixed(2) %></td>
+                            <td><%= product.stock || 0 %></td>
+
+                            <!-- Assign a class to this column for JavaScript filtering -->
+                            <td class="product-category"><%= product.category ? product.category.name : "No Category" %></td>
+
+                            <td>
+                                <form action="/delete-product/<%= product._id %>" method="POST" style="display: inline;">
+                                    <button type="submit" class="delete-btn">&#128465; Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="/edit-product/<%= product._id %>">
+                                    <button class="edit-btn">&#9998; Edit</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="9" style="text-align: center;">No products found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

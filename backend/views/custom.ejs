@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurti Customization</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .customization-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .customization-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .customization-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(156, 102, 68, 0.15);
+      }
+
+      .card-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .card-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .card-title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .card-description {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: #7d5a50;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .progress-container {
+        margin: 40px auto;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 0%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Design Your Perfect Kurti</h1>
+        <p class="subtitle">
+          Create a unique piece that reflects your personal style
+        </p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Start</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-label">Neck</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Sleeve</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-label">Length</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Color</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Review</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="customization-grid">
+        <div class="customization-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://c8.alamy.com/comp/GEDN80/illustration-featuring-a-sketch-pad-surrounded-by-swatches-of-fabric-GEDN80.jpg');
+            "
+          ></div>
+          <div class="card-content">
+            <h3 class="card-title">Start Your Design</h3>
+            <p class="card-description">
+              Begin your customization journey with a few simple steps.
+            </p>
+            <a
+              href="/customization/neck"
+              class="btn"
+              >Get Started</a
+            >
+          </div>
+        </div>
+
+        <div class="customization-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://tse3.mm.bing.net/th/id/OIP.OvnzXEgqE6Dsfol3z70cUwHaHa?rs=1&pid=ImgDetMain');
+            "
+          ></div>
+          <div class="card-content">
+            <h3 class="card-title">Upload Your Design</h3>
+            <p class="card-description">
+              Already have a design in mind? Upload your own pattern.
+            </p>
+            <a href="/customization/upload" class="btn" 
+              >Upload Design</a
+            >
+          </div>
+        </div>
+
+        <div class="customization-card">
+          <div
+            class="card-image"
+            style="
+              background-image: url('https://image.shutterstock.com/image-vector/gallery-furniture-art-template-logo-260nw-1755447590.jpg');
+            "
+          ></div>
+          <div class="card-content">
+            <h3 class="card-title">View Inspiration</h3>
+            <p class="card-description">
+              Explore our gallery for design inspiration.
+            </p>
+            <a
+              href="/customization/imageGallery"
+              class="btn"
+              >View Gallery</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Initialize customization data
+      let customizationData = {
+        neckDesign: "",
+        sleeveLength: "",
+        kurtiLength: "",
+        fabricType: "Khadi",
+        color: "",
+        customImage: null,
+      };
+
+      // Save data to localStorage
+      function saveCustomizationData() {
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+      }
+
+      // Start customization flow
+      function startCustomization() {
+        // Reset customization data
+        customizationData = {
+          neckDesign: "",
+          sleeveLength: "",
+          kurtiLength: "",
+          fabricType: "Khadi",
+          color: "",
+          customImage: null,
+        };
+
+        saveCustomizationData();
+
+        // Animation for progress bar
+        document.querySelector(".progress-completed").style.width = "15%";
+
+        // Prevent default link behavior and use JavaScript navigation
+        event.preventDefault();
+        setTimeout(() => {
+          window.location.href = "/neck.html";
+        }, 500);
+      }
+
+      function goToUpload() {
+        event.preventDefault();
+        document.querySelector(".progress-completed").style.width = "15%";
+        setTimeout(() => {
+          window.location.href = "/customization/upload";
+        }, 500);
+      }
+
+      function viewInspiration() {
+        event.preventDefault();
+        window.location.href = "/customization/imageGallery";
+      }
+    </script>
+  </body>
+</html>

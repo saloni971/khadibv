@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Complete</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        padding: 40px;
+        text-align: center;
+      }
+
+      .success-icon {
+        font-size: 80px;
+        color: #9c6644;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #9c6644;
+        margin-bottom: 15px;
+      }
+
+      .order-details {
+        background-color: #f8f3ee;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .order-detail {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        color: #7d5a50;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin-top: 30px;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="success-icon">✅</div>
+      <h1>Order Confirmed!</h1>
+      <p>
+        Thank you for your custom kurti order. We'll create your unique design
+        with care.
+      </p>
+
+      <div class="order-details">
+        <div class="order-detail">
+          <span>Order Number:</span>
+          <span id="orderNumber">-</span>
+        </div>
+        <div class="order-detail">
+          <span>Estimated Delivery:</span>
+          <span id="estimatedDelivery">-</span>
+        </div>
+        <div class="order-detail">
+          <span>Total Price:</span>
+          <span id="totalPrice">-</span>
+        </div>
+      </div>
+
+      <button class="btn" onclick="returnToHome()">Return to Home</button>
+    </div>
+
+    <script>
+      let customizationData =
+        JSON.parse(localStorage.getItem("kurtiCustomization")) || {};
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Generate a random order number
+        const generateOrderNumber = () => {
+          return "CK" + Math.floor(1000 + Math.random() * 9000);
+        };
+
+        // Calculate estimated delivery date
+        const getEstimatedDelivery = () => {
+          const today = new Date();
+          const deliveryDate = new Date(
+            today.getTime() + 10 * 24 * 60 * 60 * 1000
+          ); // 10 days from now
+          return deliveryDate.toLocaleDateString("en-GB");
+        };
+
+        // Calculate total price (same logic as review page)
+        const calculateTotalPrice = () => {
+          let basePrice = 1500;
+          const priceModifiers = {
+            fabricType: { Cotton: 0, Silk: 500, Khadi: 250 },
+            size: { XS: 0, S: 100, M: 200, L: 300 },
+            sleeveLength: { Short: 0, "Three-Quarter": 150, Full: 250 },
+            neckDesign: { Round: 0, "V-Neck": 100, Boat: 150 },
+          };
+
+          let totalPrice = basePrice;
+          totalPrice +=
+            priceModifiers.fabricType[customizationData.fabricType] || 0;
+          totalPrice += priceModifiers.size[customizationData.size] || 0;
+          totalPrice +=
+            priceModifiers.sleeveLength[customizationData.sleeveLength] || 0;
+          totalPrice +=
+            priceModifiers.neckDesign[customizationData.neckDesign] || 0;
+
+          return `₹${totalPrice.toLocaleString()}`;
+        };
+
+        // Populate order details
+        document.getElementById("orderNumber").textContent =
+          generateOrderNumber();
+        document.getElementById("estimatedDelivery").textContent =
+          getEstimatedDelivery();
+        document.getElementById("totalPrice").textContent =
+          calculateTotalPrice();
+
+        // Clear customization data after order
+        localStorage.removeItem("kurtiCustomization");
+      });
+
+      function returnToHome() {
+        window.location.href = "/";
+      }
+    </script>
+  </body>
+</html>

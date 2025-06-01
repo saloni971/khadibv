@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Inspiration Gallery | Kurti Customization</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+      }
+
+      .filter-btn {
+        padding: 8px 20px;
+        background-color: white;
+        color: #7d5a50;
+        border: 1px solid #e0d4c8;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover {
+        background-color: #f8f3ee;
+        color: #9c6644;
+        border-color: #9c6644;
+      }
+
+      .filter-btn.active {
+        background-color: #9c6644;
+        color: white;
+        border-color: #9c6644;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(156, 102, 68, 0.15);
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        padding: 20px;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+      }
+
+      .gallery-title {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+      }
+
+      .gallery-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      .gallery-tag {
+        font-size: 12px;
+        padding: 3px 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+      }
+
+      .load-more {
+        display: block;
+        margin: 40px auto;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .load-more:hover {
+        background-color: #7d5a50;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        overflow: auto;
+      }
+
+      .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 50px auto;
+        max-width: 800px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .modal-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: contain;
+      }
+
+      .modal-details {
+        padding: 20px;
+      }
+
+      .modal-title {
+        color: #9c6644;
+        margin-top: 0;
+      }
+
+      .modal-description {
+        color: #7d5a50;
+        margin-bottom: 20px;
+      }
+
+      .modal-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+
+      .modal-tag {
+        font-size: 12px;
+        padding: 5px 12px;
+        background-color: #f8f3ee;
+        border-radius: 30px;
+        color: #9c6644;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-outline:hover {
+        background-color: #9c6644;
+        color: white;
+      }
+
+      .back-to-home {
+        display: block;
+        width: fit-content;
+        margin: 30px auto;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Design Inspiration Gallery</h1>
+        <p class="subtitle">
+          Explore our collection and find inspiration for your perfect kurti
+        </p>
+      </header>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Designs</button>
+        <button class="filter-btn" data-filter="traditional">Traditional</button>
+        <button class="filter-btn" data-filter="contemporary">Contemporary</button>
+        <button class="filter-btn" data-filter="fusion">Fusion</button>
+        <button class="filter-btn" data-filter="embroidered">Embroidered</button>
+        <button class="filter-btn" data-filter="printed">Printed</button>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item" data-category="traditional embroidered">
+          <img src="https://www.mustardfashion.com/wp-content/uploads/2022/11/T874_01..(1).jpg" alt="Traditional Embroidered Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Traditional Embroidered Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Traditional</span>
+              <span class="gallery-tag">Embroidered</span>
+            </div>
+            <p>Hand-embroidered with traditional motifs</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item" data-category="contemporary printed">
+          <img src="https://i.pinimg.com/originals/69/77/7a/69777aabddb37e78a0485a0588e82b05.jpg" alt="Contemporary Printed Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Contemporary Printed Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Contemporary</span>
+              <span class="gallery-tag">Printed</span>
+            </div>
+            <p>Modern geometric print design</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item" data-category="fusion">
+          <img src="https://www.ethnicplus.in/media/wysiwyg/3_87.jpg" alt="Indo-Western Fusion Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Indo-Western Fusion Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Fusion</span>
+            </div>
+            <p>Blend of traditional and western elements</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item" data-category="embroidered contemporary">
+          <img src="https://tse1.mm.bing.net/th/id/OIP.OhrRFAPiXu1bYcRr89b2ngAAAA?rs=1&pid=ImgDetMain" alt="Modern Embroidered Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Modern Embroidered Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Contemporary</span>
+              <span class="gallery-tag">Embroidered</span>
+            </div>
+            <p>Contemporary take on classic embroidery</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item" data-category="traditional printed">
+          <img src="https://i.pinimg.com/originals/51/44/d1/5144d1aa06e2e4eac66eafab7c162131.png" alt="Block Printed Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Block Printed Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Traditional</span>
+              <span class="gallery-tag">Printed</span>
+            </div>
+            <p>Hand block printed with traditional techniques</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item" data-category="fusion embroidered">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.EVFaW0fv8-mb-aQXow2yewHaLG?rs=1&pid=ImgDetMain" alt="Bohemian Fusion Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Bohemian Fusion Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Fusion</span>
+              <span class="gallery-tag">Embroidered</span>
+            </div>
+            <p>Bohemian style with intricate detailing</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item" data-category="contemporary">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.E5-Tq4nIBcTg_O5riH5GWQHaLH?rs=1&pid=ImgDetMain" alt="Minimalist Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Minimalist Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Contemporary</span>
+            </div>
+            <p>Clean lines and simple design</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item" data-category="traditional embroidered">
+          <img src="https://kurtifashion.com/wp-content/uploads/2020/06/Pink-kurti-with-foil-mirror-2-asda23s.jpeg" alt="Mirror Work Kurti" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Mirror Work Kurti</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Traditional</span>
+              <span class="gallery-tag">Embroidered</span>
+            </div>
+            <p>Traditional design with mirror embellishments</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 9 -->
+        <div class="gallery-item" data-category="printed fusion">
+          <img src="https://i.pinimg.com/originals/7f/14/0b/7f140b384eae4d60a4c349992bc77279.jpg" alt="Digital Print Fusion" class="gallery-image">
+          <div class="gallery-overlay">
+            <h3 class="gallery-title">Digital Print Fusion</h3>
+            <div class="gallery-tags">
+              <span class="gallery-tag">Fusion</span>
+              <span class="gallery-tag">Printed</span>
+            </div>
+            <p>Modern digital prints with traditional silhouette</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="load-more" id="loadMoreBtn">Load More Designs</button>
+      <a href="/views/html/custom.html" class="btn btn-outline back-to-home">Back to Home</a>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="designModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" src="" alt="Design Detail" class="modal-image">
+        <div class="modal-details">
+          <h2 id="modalTitle" class="modal-title"></h2>
+          <p id="modalDescription" class="modal-description"></p>
+          <div id="modalTags" class="modal-tags"></div>
+          <div class="modal-buttons">
+            <button class="btn" onclick="useThisDesign()">Use This Design</button>
+            <button class="btn btn-outline" onclick="closeModal()">Continue Browsing</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const filter = button.getAttribute('data-filter');
+          
+          // Show/hide gallery items based on filter
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Modal functionality
+      const modal = document.getElementById('designModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalTags = document.getElementById('modalTags');
+      const closeBtn = document.querySelector('.modal-close');
+      
+      galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          const title = item.querySelector('.gallery-title').textContent;
+          const description = item.querySelector('p').textContent;
+          const tags = item.querySelectorAll('.gallery-tag');
+          
+          modalImage.src = img.src;
+          modalTitle.textContent = title;
+          modalDescription.textContent = description;
+          
+          // Clear and repopulate tags
+          modalTags.innerHTML = '';
+          tags.forEach(tag => {
+            const newTag = document.createElement('span');
+            newTag.classList.add('modal-tag');
+            newTag.textContent = tag.textContent;
+            modalTags.appendChild(newTag);
+          });
+          
+          modal.style.display = 'block';
+        });
+      });
+      
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      function closeModal() {
+        modal.style.display = 'none';
+      }
+      
+      // Use this design functionality
+      function useThisDesign() {
+        // Initialize customization data if needed
+        let customizationData = JSON.parse(localStorage.getItem('kurtiCustomization')) || {
+          neckDesign: "",
+          sleeveLength: "",
+          kurtiLength: "",
+          fabricType: "Khadi",
+          color: "",
+          customImage: null,
+          inspirationTitle: ""
+        };
+        
+        // Store selected design information
+        customizationData.inspirationTitle = modalTitle.textContent;
+        customizationData.inspirationImage = modalImage.src;
+        
+        localStorage.setItem('kurtiCustomization', JSON.stringify(customizationData));
+        
+        // Redirect to the main customization flow
+        window.location.href = "/views/html/neck.html";
+      }
+      
+      // Load more functionality (simulated)
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      let loadCount = 0;
+      
+      loadMoreBtn.addEventListener('click', () => 
+        loadCount++);
+        
+        if (loadCount >= 2) {
+          loadMoreBtn.textContent = "No More Designs";
+          loadMoreBtn.disabled = true;
+        } else {
+          // Clone the first 6 items and append them to the grid
+          const container = document.querySelector('.gallery-grid');
+          const itemsToClone = Array.from(galleryItems).slice(0, 6);
+        }

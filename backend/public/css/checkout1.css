@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e1d6cf;
+}
+
+header {
+    background-color:#804000;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    position: fixed; /* Makes it fixed at the top */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    left: 0;
+    z-index: 1000; /* Ensure it's above other elements */
+    
+}
+
+.checkout-container {
+    width: 60%;
+    margin: 80px auto 20px auto; /* Added top margin to prevent overlap */
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(152, 64, 6, 0.493);
+   
+   
+}
+
+.step {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #acacac;
+    
+}
+
+
+#address-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#address-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+h2 {
+    margin-bottom: 30px;
+    margin-top: 0px;    
+    color: #2965c6;
+}
+
+.continue-btn, .place-order-btn, .change-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    color: white;
+    background-color: #be4d2b;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.continue-btn:hover, .place-order-btn:hover {
+    background-color: #E64A19;
+}
+
+.place-order-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.address-box {
+    background: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.change-btn {
+    background-color: #7b3f0d;
+    position: absolute;
+    top: 50%;
+    bottom :20%;
+    right: 20px;
+    transform: translateY(80%);
+    width: auto;
+}
+.order-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.order-details {
+    display: flex;
+    align-items: center;
+}
+
+.order-details img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity button {
+    background: #ddd;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.remove {
+    margin-left: 20px;
+    color: #7b3f0d;
+    font-weight: bold;
+    text-decoration: none;
+}
+.price-summary {
+    background: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.price-summary p {
+    margin: 5px 0;
+}
+
+.free {
+    color: green;
+    font-weight: bold;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the spacing between the radio button and text */
+    padding: 10px 0;
+    justify-content: start; /* Ensures left alignment */
+}
+
+.radio-container input {
+    margin: 0;
+}
+
+.radio-container label {
+    margin: 0;
+    display: inline-block;
+    font-size: 16px; /* Ensure text is readable */
+   
+
+}
+.address-box {
+    background: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+    
+}
+
+
+
+

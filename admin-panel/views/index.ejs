@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Dropdown</title>
+    <link rel="stylesheet" href="/css/admin-panel.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo-container">
+                <img src="/images/logo4.png" alt="KhadiBv.IN Logo">
+            </div>
+            <h2>Admin Panel</h2><br>
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="/view-customers">Customers</a></li>
+                <li class="dropdown">
+                    <a href="#">Product ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/insert-product">Insert Product</a></li>
+                        <li><a href="/view-products">View Product</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Category ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/insert-category">Insert Category</a></li>
+                        <li><a href="/view-category">View Category</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/orders">Orders</a></li>
+                <li><a href="/admin/custom-orders">Customized Orders</a></li> <!-- Added Customized Orders -->
+                <li><a href="/payments">Payment</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <header>
+                <h1>Dashboard</h1>
+                <div class="welcome-text">Welcome, Admin</div>
+            </header>
+        </main>
+    </div>
+    <div class="main-content1">
+        <div class="top-cards">
+            <div class="card">Products: <strong><%= productCount %></strong></div>
+            <div class="card">Users: <strong><%= userCount %></strong></div>
+            <div class="card">Orders: <strong><%= orderCount %></strong></div>
+    
+            <div class="card">Total Sales: <strong>₹<%= totalSales %></strong></div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="charts">
+                <h3>User statistics</h3>
+                <canvas id="userStatsChart"></canvas>
+                <p class="user-stats-message"></p>
+            </div>
+            <div class="charts">
+                <h3>Product statistics</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="categories">
+                <h3>Product Categories</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pass userStats data to the frontend -->
+    <script>
+        const userStats = <%- userStats %>;
+        const salesStats = <%- salesStats %>;
+        const categoryStats = <%- categoryStats %>;
+    </script>
+
+    <script src="/js/admin-panel.js"></script>
+</body>
+</html>

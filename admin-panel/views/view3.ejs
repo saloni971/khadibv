@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Products</title>
+    <link rel="stylesheet" href="/css/view3.css"> <!-- Linking External CSS -->
+</head>
+<body>
+    <header>
+        <h2>View Customer</h2>
+    </header>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Customer Name</th>
+                    <th>Customer Email</th>
+                    <th>Customer contact</th>
+                    <th>Customer Address</th>
+                    
+                    <th>Product Delete</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user._id %></td>
+                        <td><%= user.username %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.contact %></td>
+                        <td><%= user.address %></td>
+                        <td>
+                            <button class="delete-btn" data-id="<%= user._id %>">&#128465; Delete</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+            
+        </table>
+    </div>
+    <script src="/js/view3.js"></script> 
+</body>
+</html>

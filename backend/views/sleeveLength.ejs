@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurti Customization</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .progress-container {
+        margin: 20px auto 40px;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 30%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      .sleeve-options-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .sleeve-option-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(156, 102, 68, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .sleeve-option-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(156, 102, 68, 0.15);
+      }
+
+      .sleeve-option-card.selected {
+        box-shadow: 0 0 0 3px #9c6644, 0 8px 25px rgba(156, 102, 68, 0.15);
+      }
+
+      .sleeve-option-card.selected::after {
+        content: "✓";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-color: #9c6644;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .sleeve-image {
+        height: 240px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .sleeve-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .sleeve-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .sleeve-description {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(156, 102, 68, 0.1);
+      }
+
+      .btn-disabled {
+        background-color: #e0d4c8;
+        cursor: not-allowed;
+      }
+
+      .btn-disabled:hover {
+        background-color: #e0d4c8;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Choose Your Sleeve Length</h1>
+        <p class="subtitle">
+          Select the sleeve style that best suits your preference
+        </p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Start</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Neck</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Sleeve</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-label">Length</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Color</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Review</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="sleeve-options-container">
+        <div
+          class="sleeve-option-card"
+          data-sleeve="Full"
+          onclick="selectSleeveLength(this)"
+        >
+          <div
+            class="sleeve-image"
+            style="
+              background-image: url('https://i.pinimg.com/originals/d4/61/55/d46155e0ae1eff523ea2ce8e749d0184.jpg');
+            "
+          ></div>
+          <div class="sleeve-content">
+            <h3 class="sleeve-title">Full Sleeve</h3>
+            <p class="sleeve-description">
+              Classic full-length sleeves for traditional elegance and modesty.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="sleeve-option-card"
+          data-sleeve="Half"
+          onclick="selectSleeveLength(this)"
+        >
+          <div
+            class="sleeve-image"
+            style="
+              background-image: url('https://tse4.mm.bing.net/th/id/OIP.zxqdsBpTAGBcDYJVTSEO4AAAAA?rs=1&pid=ImgDetMain');
+            "
+          ></div>
+          <div class="sleeve-content">
+            <h3 class="sleeve-title">Half Sleeve</h3>
+            <p class="sleeve-description">
+              Perfect balance between comfort and coverage.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="sleeve-option-card"
+          data-sleeve="Sleeveless"
+          onclick="selectSleeveLength(this)"
+        >
+          <div
+            class="sleeve-image"
+            style="
+              background-image: url('https://tse1.mm.bing.net/th/id/OIP.O0U_Y6xjRin4jt2MzzQeIQHaHa?rs=1&pid=ImgDetMain');
+            "
+          ></div>
+          <div class="sleeve-content">
+            <h3 class="sleeve-title">Sleeveless</h3>
+            <p class="sleeve-description">
+              Modern, airy design perfect for warm weather.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <a href="/customization/neck" class="btn btn-secondary">Back</a>
+        <button
+          id="nextButton"
+          class="btn btn-disabled"
+          disabled
+          onclick="goToNextStep()"
+        >
+          Next
+        </button>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Load customization data from localStorage if available
+      let customizationData;
+
+      try {
+        const savedData = localStorage.getItem("kurtiCustomization");
+        customizationData = savedData
+          ? JSON.parse(savedData)
+          : {
+              neckDesign: "",
+              sleeveLength: "",
+              kurtiLength: "",
+              fabricType: "Khadi",
+              color: "",
+              customImage: null,
+            };
+      } catch (e) {
+        customizationData = {
+          neckDesign: "",
+          sleeveLength: "",
+          kurtiLength: "",
+          fabricType: "Khadi",
+          color: "",
+          customImage: null,
+        };
+      }
+
+      // If there's a saved sleeve length, pre-select it
+      if (customizationData.sleeveLength) {
+        const cards = document.querySelectorAll(".sleeve-option-card");
+        cards.forEach((card) => {
+          if (card.dataset.sleeve === customizationData.sleeveLength) {
+            card.classList.add("selected");
+            document.getElementById("nextButton").disabled = false;
+            document
+              .getElementById("nextButton")
+              .classList.remove("btn-disabled");
+          }
+        });
+      }
+
+      // Handle sleeve length selection
+      function selectSleeveLength(element) {
+        // Clear previous selection
+        const cards = document.querySelectorAll(".sleeve-option-card");
+        cards.forEach((card) => card.classList.remove("selected"));
+
+        // Add selected class to clicked element
+        element.classList.add("selected");
+
+        // Save selection to customization data
+        customizationData.sleeveLength = element.dataset.sleeve;
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+
+        // Enable next button
+        document.getElementById("nextButton").disabled = false;
+        document.getElementById("nextButton").classList.remove("btn-disabled");
+      }
+
+      // Go to next step in customization
+      function goToNextStep() {
+        // Animation for progress bar
+        document.querySelector(".progress-completed").style.width = "45%";
+
+        // Navigate to length selection page
+        setTimeout(() => {
+          window.location.href = "/customization/selectLen";
+        }, 500);
+      }
+
+      // Update progress bar on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".progress-completed").style.width = "30%";
+        setTimeout(() => {
+          document.querySelector(".progress-completed").style.width = "45%";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

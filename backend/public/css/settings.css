@@ -1,0 +1,93 @@
+/* General Container Styling */
+.settings-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 25px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  /* Page Title */
+  .settings-container h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #2c3e50;
+  }
+  
+  /* Section Titles */
+  .settings-container h2 {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #34495e;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  /* Form Labels */
+  .settings-container label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Input Fields */
+  .settings-container input[type="text"],
+  .settings-container input[type="email"],
+  .settings-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Input Focus Styles */
+  .settings-container input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    outline: none;
+  }
+  
+  /* Buttons */
+  .settings-container button[type="submit"] {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .settings-container button[type="submit"]:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .settings-container {
+      padding: 20px;
+    }
+  
+    .settings-container h1 {
+      font-size: 24px;
+    }
+  
+    .settings-container h2 {
+      font-size: 20px;
+    }
+  }
+  

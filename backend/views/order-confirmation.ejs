@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #F2E6DA;
+        }
+
+        .confirmation-box {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-box .icon {
+            font-size: 50px;
+            color: #bc9064;
+            border: 3px solid #b6916c;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            box-shadow: 0 0 15px rgba(173, 125, 14, 0.568);
+        }
+
+        .confirmation-box h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-box p {
+            font-size: 14px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .confirmation-box a {
+            color: #795548  ;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-shadow: #8B5E3C;
+        }
+
+       .confirmation-box .delivery-date {
+            font-weight: bold;
+            color: black;
+        }
+
+        .confirmation-box .btn {
+            
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 20px;
+            border: 2px solid #60400d;
+            background: #8B5E3C;
+            transform: scale(1.05);
+        }
+
+        .confirmation-box .btn:hover {
+            background: #6A3F2C;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-box">
+        <div class="icon">✔</div>
+        <h2>Thank You for Order!</h2>
+        <p>Your order has been placed successfully.</p>
+        <p>Get delivery by <span class="delivery-date">Mon, 01 Apr - Thu, 03 Apr</span></p>
+        <p>Your order ID: <span id="orderID"></span></p>
+        <a href="/" class="btn">CONTINUE SHOPPING</a>
+    </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderID = urlParams.get("orderID");
+
+    if (orderID) {
+        document.getElementById("orderID").textContent = orderID;  // Display order ID
+    } else {
+        document.getElementById("orderID").textContent = "Order ID not found.";
+    }
+});
+
+  </script>
+</body>
+</html>

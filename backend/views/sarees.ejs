@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khadi Sarees</title>
+    <link rel="stylesheet" href="/css/saree.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+          <img
+            src="/public/images/logo4.png"
+            alt="Khadi Store Logo"
+            height="1%"
+            width="1%"
+          />
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search for products, categories, or brands"
+          />
+          <span class="material-icons" id="search-icon" title="Search"
+            >search</span
+          >
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#categories">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" id="contact-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="icons">
+          <span class="material-icons" id="cart-icon" title="Cart"
+            ><a href="/cart">shopping_cart</a></span
+          >
+          <span class="material-icons" id="wishlist-icon" title="Wishlist"
+            ><a href="/wishlist">favorite_border</a></span
+          >
+  
+          <% if (user) { %>
+          <!-- User is logged in -->
+          <div class="profile-dropdown">
+            <span
+              class="material-icons"
+              id="profile-icon"
+              title="Profile"
+            >
+              account_circle
+            </span>
+            <div class="dropdown-content">
+              <p>Welcome, <%= user.name %>!</p>
+              <a href="/settings">settings</a>
+              <a href="/orders">My Orders</a>
+              <a href="/logout">Logout</a>
+            </div>
+          </div>
+          <% } else { %>
+          <!-- User is not logged in -->
+          <span class="material-icons" id="login-icon" title="Login/Signup">
+            <a href="/signup">account_circle</a>
+          </span>
+          <% } %>
+  
+          <span
+            class="material-icons"
+            id="notifications-icon"
+            title="Notifications"
+            >notifications</span
+          >
+          <span class="material-icons" id="chatbot-icon" title="Chatbox"
+            >chat</span
+          >
+        </div>
+      </header>
+<section id="category">
+    <h2>Khadi Sarees</h2>
+    <div class="product-list">
+        <% if (products && products.length > 0) { %>
+            <% products.forEach(product => { %>
+                <div class="product" onclick="openModal('<%= JSON.stringify(product) %>')">
+                    <img src="/images/<%= product.images && product.images.length > 0 ? product.images[0] : 'images/default-placeholder.png' %>" 
+                         alt="<%= product.name %>">
+                    <h3><%= product.name %></h3>
+                    <p>₹<%= product.price %></p>
+                    <button onclick="addToCart('<%= product._id %>')">Add to Cart</button>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No products available at the moment.</p>
+        <% } %>
+    </div>
+</section>
+
+<!-- Product Modal -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-images">
+            <img id="main-image" src="" alt="Product Image">
+            <div id="image-thumbnails"></div>
+        </div>
+        <div class="modal-details">
+            <h3 id="product-title"></h3>
+            <p id="product-description"></p>
+            <p id="product-price"></p>
+            <button id="add-to-cart-btn" onclick="addToCartFromModal()">Add to Cart</button>
+            <button id="add-to-wishlist-btn" onclick="addToWishlist()">Add to Wishlist</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Khadi Store | Made with Passion and Khadi</p>
+</footer>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+}
+
+.banner .logo img {
+    height: 40px;
+}
+
+.banner nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.banner nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner .utilities {
+    display: flex;
+    gap: 10px;
+}
+
+.animation-section {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.products {
+    margin: 20px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.filters {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+}
+
+main {
+    margin-left: 220px;
+}

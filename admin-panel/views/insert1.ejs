@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Product</title>
+    <link rel="stylesheet" href="/css/insert1.css">
+</head>
+<body>
+<header>
+    <h2 align="center">Insert Product</h2>
+</header>
+<!-- Outer Table -->
+<table class="outer-table">
+    <tr>
+        <td>
+            <form id="product-form" method="post" enctype="multipart/form-data">
+                <table class="inner-table">
+                    <tr>
+                        <td><label for="product-name">Product Name:</label></td>
+                        <td><input type="text" id="product-name" name="product-name" placeholder="Enter product name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-category">Product Category:</label></td>
+                        <td><input type="text" id="product-category" name="product-category" placeholder="Enter product category" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-images">Product Images:</label></td>
+                        <td><input type="file" id="product-images" name="product-images" accept="image/*" multiple required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-price">Product Price:</label></td>
+                        <td><input type="number" id="product-price" name="product-price" placeholder="Enter price" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-description">Product Description:</label></td>
+                        <td><textarea id="product-description" name="product-description" rows="4" placeholder="Enter product description" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><label for="product-stock">Stock Quantity:</label></td>
+                        <td><input type="number" id="product-stock" name="product-stock" placeholder="Enter stock quantity" required></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <div class="button-container">
+                                <button type="submit">Insert</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<script src="/js/insert-product.js"></script> <!-- Add this line to include your JavaScript -->
+</body>
+</html>

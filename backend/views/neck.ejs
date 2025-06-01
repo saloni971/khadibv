@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neck Design</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .progress-container {
+        margin: 20px auto 40px;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 15%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      .neck-design-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .neck-design-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(156, 102, 68, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .neck-design-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(156, 102, 68, 0.15);
+      }
+
+      .neck-design-card.selected {
+        box-shadow: 0 0 0 3px #9c6644, 0 8px 25px rgba(156, 102, 68, 0.15);
+      }
+
+      .neck-design-card.selected::after {
+        content: "✓";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-color: #9c6644;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .neck-image {
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .neck-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .neck-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .neck-description {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(156, 102, 68, 0.1);
+      }
+
+      .btn-disabled {
+        background-color: #e0d4c8;
+        cursor: not-allowed;
+      }
+
+      .btn-disabled:hover {
+        background-color: #e0d4c8;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Choose Your Neck Design</h1>
+        <p class="subtitle">
+          Select the perfect neckline that suits your style
+        </p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Start</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Neck</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Sleeve</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-label">Length</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Color</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Review</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="neck-design-container">
+        <div
+          class="neck-design-card"
+          data-design="Round Neck"
+          onclick="selectNeckDesign(this)"
+        >
+          <div
+            class="neck-image"
+            style="
+              background-image: url('https://images.bewakoof.com/web/round-neck-kurti-neck-design-bewakoof-10-1634551935.jpg');
+            "
+          ></div>
+          <div class="neck-content">
+            <h3 class="neck-title">Round Neck</h3>
+            <p class="neck-description">
+              A classic, versatile design that suits all body types and
+              occasions.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="neck-design-card"
+          data-design="V Neck"
+          onclick="selectNeckDesign(this)"
+        >
+          <div
+            class="neck-image"
+            style="
+              background-image: url('https://tse4.mm.bing.net/th/id/OIP.Uxrl-qBTrI04TdBAbdtSzgAAAA?rs=1&pid=ImgDetMain');
+            "
+          ></div>
+          <div class="neck-content">
+            <h3 class="neck-title">V Neck</h3>
+            <p class="neck-description">
+              Elongates the neck and creates a slimming effect.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="neck-design-card"
+          data-design="Collar Neck"
+          onclick="selectNeckDesign(this)"
+        >
+          <div
+            class="neck-image"
+            style="
+              background-image: url('https://tse1.mm.bing.net/th/id/OIP.tNxLx7So55nWCX0rXLZqUwHaLG?w=683&h=1024&rs=1&pid=ImgDetMain');
+            "
+          ></div>
+          <div class="neck-content">
+            <h3 class="neck-title">Collar Neck</h3>
+            <p class="neck-description">
+              Adds a formal touch perfect for professional settings.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="neck-design-card"
+          data-design="Square Neck"
+          onclick="selectNeckDesign(this)"
+        >
+          <div
+            class="neck-image"
+            style="
+              background-image: url('https://cdn0.weddingwire.in/articles/images/9/4/0/2/img_22049/indian-blouse-neck-designs-anushree-reddy-square-indian-blouse-neck-design.jpg');
+            "
+          ></div>
+          <div class="neck-content">
+            <h3 class="neck-title">Square Neck</h3>
+            <p class="neck-description">
+              A flattering design that balances modern and traditional styles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <a href="/customization/custom" class="btn btn-secondary">Back</a>
+        <button
+          id="nextButton"
+          class="btn btn-disabled"
+          disabled
+          onclick="goToNextStep()"
+        >
+          Next
+        </button>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Load customization data from localStorage if available
+      let customizationData;
+
+      try {
+        const savedData = localStorage.getItem("kurtiCustomization");
+        customizationData = savedData
+          ? JSON.parse(savedData)
+          : {
+              neckDesign: "",
+              sleeveLength: "",
+              kurtiLength: "",
+              fabricType: "Khadi",
+              color: "",
+              customImage: null,
+            };
+      } catch (e) {
+        customizationData = {
+          neckDesign: "",
+          sleeveLength: "",
+          kurtiLength: "",
+          fabricType: "Khadi",
+          color: "",
+          customImage: null,
+        };
+      }
+
+      // If there's a saved neck design, pre-select it
+      if (customizationData.neckDesign) {
+        const cards = document.querySelectorAll(".neck-design-card");
+        cards.forEach((card) => {
+          if (card.dataset.design === customizationData.neckDesign) {
+            card.classList.add("selected");
+            document.getElementById("nextButton").disabled = false;
+            document
+              .getElementById("nextButton")
+              .classList.remove("btn-disabled");
+          }
+        });
+      }
+
+      // Handle neck design selection
+      function selectNeckDesign(element) {
+        // Clear previous selection
+        const cards = document.querySelectorAll(".neck-design-card");
+        cards.forEach((card) => card.classList.remove("selected"));
+
+        // Add selected class to clicked element
+        element.classList.add("selected");
+
+        // Save selection to customization data
+        customizationData.neckDesign = element.dataset.design;
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+
+        // Enable next button
+        document.getElementById("nextButton").disabled = false;
+        document.getElementById("nextButton").classList.remove("btn-disabled");
+      }
+
+      // Go to next step in customization
+      function goToNextStep() {
+        // Animation for progress bar
+        document.querySelector(".progress-completed").style.width = "30%";
+
+        // Navigate to sleeve selection page
+        setTimeout(() => {
+          window.location.href = "/customization/sleeveLength";
+        }, 500);
+      }
+
+      // Update progress bar on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".progress-completed").style.width = "15%";
+        setTimeout(() => {
+          document.querySelector(".progress-completed").style.width = "30%";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+/* Sidebar Styling */
+
+body{
+    display: flex;
+    font-family: Arial, sans-serif;/* add */
+    background:#AB886D;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.container {
+    display: flex;
+    height: 100vh;
+    
+}
+.logo-container {
+    text-align: center;
+  
+}
+
+.logo-container img {
+    width: 100px; /* Adjust size */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 200px;
+    background: #493628;
+    padding: 10px;
+    height: 100vh;
+    color: white;
+    position:fixed;
+    top:0;
+    left:0;
+    overflow-y:auto;
+}
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 0px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    
+    
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 8px;
+    text-align: center;
+}
+
+.main-content {
+    
+    padding: 10px;
+    background: #AB886D;
+    margin-left:200px;
+    padding-top:80px;
+    min-height: calc(100vh-60px);
+    width: calc(100%-200px);
+    
+    
+}
+
+/* Header */
+header {
+    position: fixed;
+    top:0;
+    left: 220px;
+    width: calc(100% - 220px);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background: #0e3742;
+    padding: 10px;
+    color: white;
+    z-index: 1000;
+    border-radius: 0;
+    height:40px
+}
+.welcome-text {
+    position:absolute ;
+    right: 35px;
+    font-size: 16px;
+    
+}
+
+.main-content1 {
+    margin-left: 10px;
+    padding: 10px;
+    background: #AB886D;
+    height: 100vh;
+    width: calc(100% - 260px); /* Fixed spacing issue */
+}
+
+.top-cards {
+margin-top: 60px;
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    padding: 15px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.card:nth-child(1) { background: #04087bb6; } 
+.card:nth-child(2) { background: #790a02b5; } 
+.card:nth-child(3) { background: #3a2403b5; } 
+.card:nth-child(4) { background: #2c802ec0; } 
+
+/* Charts Container */
+.charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    height: auto;
+    margin-top: 10px;
+    flex-direction: column; /* Stack elements */
+    align-items: center;
+    
+    
+}
+
+.charts {
+    width: 100%; /* Make both statistics charts take full width */
+    max-width: 600px; /* Limit their width */
+    background-color: #ddd;
+    padding:30px;
+}
+
+.categories {
+    width: 100%; /* Move the Product Categories below */
+    max-width: 600px; /* Set a max-width to keep layout neat */ /* Add spacing to push it down */
+    background-color: #ddd;
+    padding:30px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 200px !important;
+    max-height: 200px;
+}
+
+/* Product Categories */
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+
+.categories ul li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Category Colors */
+.uniform { background: rgb(136, 89, 3); }
+.kurti { background: rgb(238, 142, 158); }
+.saree { background: rgb(104, 4, 104); }
+.bedsheet { background: rgb(3, 89, 3); }
+.bag { background: rgba(4, 4, 162, 0.715); }
+.pant { background: rgba(174, 2, 2, 0.735); }
+
+
+/* Dropdown Menu - Initially Hidden */
+.dropdown-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    background: white;
+    position: absolute;
+    left: 0;
+    top: 70%;
+    width: 100%; 
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensures it's above other elements */
+}
+
+/* Dropdown Items - Proper Visibility */
+.dropdown-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+/* Ensure text is visible */
+.dropdown-menu li a {
+    color: black !important; /* Forces black text */
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+}
+
+/* Change background on hover for better visibility */
+.dropdown-menu li:hover {
+    background: #f0f0f0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover  .dropdown-menu {
+    display: block;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        transform: translateX(-100%);
+    }
+    .sidebar.open {
+        width: 200px;
+        transform: translateX(0);
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    header {
+        left: 0;
+        width: 100%;
+    }
+    .menu-toggle {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #fff;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}

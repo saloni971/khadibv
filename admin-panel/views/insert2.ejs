@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Category</title>
+    <link rel="stylesheet" href="/css/insert2.css"> <!-- Linking external CSS -->
+</head>
+<body>
+    <header>
+        <h2>Insert Category</h2>
+    </header>
+    <div class="form-container">
+        <div class="form-content">
+            <form id="category-form" enctype="multipart/form-data">
+                <label for="category-name">Category Name:</label>
+                <input type="text" id="category-name" name="category-name" placeholder="Enter category name" required>
+
+                <label for="category-image">Category Image:</label>
+                <input type="file" id="category-image" name="category-image" class="file-input" required>
+
+                <button type="submit" class="btn">Insert</button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/insert-category.js"></script>
+</body>
+</html>

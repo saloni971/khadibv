@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - KhadiBV</title>
+    <link rel="stylesheet" href="/css/checkout1.css">
+</head>
+<body>
+    <header>
+        <h1>KhadiBV</h1>
+    </header>
+
+    <div class="checkout-container">
+        <div class="checkout-left">
+            <!-- Step 1: Delivery Address -->
+            <div class="step" id="step1">
+                <h2>1. Delivery Address</h2>
+                <div id="saved-address-box" class="address-box" style="display: none;">
+                    <p><strong>Name:</strong> <span id="saved-name"></span></p>
+                    <p><strong>Address:</strong> <span id="saved-address"></span></p>
+                    <p><strong>Pincode:</strong> <span id="saved-pincode"></span></p>
+                    <p><strong>City:</strong> <span id="saved-city"></span></p>
+                    <p><strong>State:</strong> <span id="saved-state"></span></p>
+
+                    <div class="button-group">
+                        <!-- Change Address Button -->
+                        <button class="change-btn" onclick="editAddress()">Change</button>
+
+                        <!-- Proceed to Order Summary Button -->
+                        <button class="continue-btn" onclick="proceedToOrderSummary()">Proceed to Order Summary</button>
+                    </div>
+                </div>
+                
+                <form id="address-form" style="display: none;">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" required>
+                    <label for="pincode">Pincode</label>
+                    <input type="text" id="pincode" required>
+                    <label for="city">City</label>
+                    <input type="text" id="city" required>
+                    <label for="state">State</label>
+                    <input type="text" id="state" required>
+                    <button class="continue-btn" onclick="saveAddress(event)">Save & Continue</button>
+                </form>
+            </div>
+
+           <!-- Step 2: Order Summary (Initially Hidden) -->
+<div class="step" id="step2" style="display: none;">
+    <h2>2. Order Summary</h2>
+    <div id="order-summary">
+        <% cartItems.forEach(item => { %>
+            <% if (item.productID) { %>
+                <div class="order-item" data-product-id="<%= item.productID._id %>"> <!-- Add data attribute for product ID -->
+                    <p><strong><%= item.productID.name %></strong></p>
+                    <p>Quantity: <%= item.quantity %></p>
+                    <p>Price: ₹<%= item.productID.price %></p>
+                </div>
+            <% } else { %>
+                <div class="order-item">
+                    <p><strong>Product not found</strong></p>
+                    <p>Quantity: <%= item.quantity %></p>
+                    <p>Price: <%= item.price %></p>
+                </div>
+            <% } %>
+        <% }) %>
+    </div>
+    <div class="price-summary">
+    <p>Price (<span id="total-items"><%= cartItems.length %></span> items): ₹<span id="total-price"><%= totalPrice %></span></p>
+    <p>Delivery Charges: <span class="free">FREE</span></p>
+    <p>Platform Fee: ₹3</p>
+    <hr>
+    <p><strong>Total Payable: ₹<span id="final-price"><%= totalPrice + 3 %></span></strong></p>
+</div>
+
+<button class="continue-btn" onclick="proceedToPayment()">Continue</button>
+</div>
+
+            <!-- Step 3: Payment Options (Initially Hidden) -->
+            <!-- Step 3: Payment Options (Initially Hidden) -->
+<div class="step" id="step3" style="display: none;">
+    <h2>3. Payment Options</h2>
+    <div class="radio-container">
+        <input type="radio" id="cod" name="payment" value="cod">
+        <label for="cod">Cash on Delivery (COD)</label>
+    </div>
+    <button class="place-order-btn" id="placeOrderBtn" onclick="placeOrder()" disabled>Place Order</button>
+</div>
+        </div>
+    </div>
+
+    <script src="/js/checkout1.js" defer></script>
+    <script>
+        function proceedToOrderSummary() {
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+        }
+        function proceedToPayment() {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        document.getElementById('placeOrderBtn').disabled = false; // Enable the Place Order button
+    }
+    </script>
+</body>
+</html>

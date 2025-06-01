@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fabric Selection</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+      .progress-container {
+        margin: 40px auto;
+        max-width: 600px;
+      }
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 45%;
+        transition: width 0.3s ease;
+      }
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      .fabric-selection-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        padding: 40px;
+        margin-top: 30px;
+      }
+
+      .fabric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .fabric-card {
+        border: 2px solid #e0d4c8;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .fabric-card:hover,
+      .fabric-card.selected {
+        border-color: #9c6644;
+        box-shadow: 0 4px 10px rgba(156, 102, 68, 0.2);
+      }
+
+      .fabric-card img {
+        max-width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+
+      .fabric-card h3 {
+        margin: 10px 0;
+        color: #7d5a50;
+      }
+
+      .color-options {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .color-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin: 0 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .color-circle.selected {
+        border-color: #9c6644;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+      }
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+      .btn-outline:hover {
+        background-color: #9c6644;
+        color: white;
+      }
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Choose Your Fabric</h1>
+        <p class="subtitle">Select the perfect fabric for your custom kurti</p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Upload</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Adjust</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Fabric</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-label">Size</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Review</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="fabric-selection-container">
+        <div class="fabric-grid">
+          <div class="fabric-card" data-fabric="Cotton">
+            <img
+              src="https://tse3.mm.bing.net/th/id/OIP.NRd6dlQqehercm4hXVw06wHaHa?rs=1&pid=ImgDetMain"
+              alt="Cotton Fabric"
+            />
+            <h3>Cotton</h3>
+            <p>Soft, breathable, perfect for everyday wear</p>
+          </div>
+          <div class="fabric-card" data-fabric="Silk">
+            <img
+              src="https://tse2.mm.bing.net/th/id/OIP.yXYE6QddXobKkQhroIsnFAHaHa?rs=1&pid=ImgDetMain"
+              alt="Silk Fabric"
+            />
+            <h3>Silk</h3>
+            <p>Luxurious, smooth, ideal for special occasions</p>
+          </div>
+          <div class="fabric-card" data-fabric="Khadi">
+            <img
+              src="https://tse2.mm.bing.net/th/id/OIP.ETckmvpj3638NoJ5eNgI4gAAAA?rs=1&pid=ImgDetMain"
+              alt="Khadi Fabric"
+            />
+            <h3>Khadi</h3>
+            <p>Traditional, handwoven, eco-friendly fabric</p>
+          </div>
+        </div>
+
+        <div class="color-options">
+          <div
+            class="color-circle"
+            style="background-color: #f0e68c"
+            data-color="Khaki"
+          ></div>
+          <div
+            class="color-circle"
+            style="background-color: #ffffff"
+            data-color="White"
+          ></div>
+          <div
+            class="color-circle"
+            style="background-color: #d2691e"
+            data-color="Chocolate"
+          ></div>
+          <div
+            class="color-circle"
+            style="background-color: #8b4513"
+            data-color="SaddleBrown"
+          ></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+          <button class="btn" onclick="proceedToNextStep()">
+            Next: Choose Size
+          </button>
+          <button class="btn btn-outline" onclick="goBack()">
+            Back to Design Adjustment
+          </button>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      let customizationData = JSON.parse(
+        localStorage.getItem("kurtiCustomization")
+      ) || {
+        neckDesign: "",
+        sleeveLength: "",
+        kurtiLength: "",
+        fabricType: "",
+        color: "",
+        customImage: null,
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const fabricCards = document.querySelectorAll(".fabric-card");
+        const colorCircles = document.querySelectorAll(".color-circle");
+
+        // Fabric selection
+        fabricCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            fabricCards.forEach((c) => c.classList.remove("selected"));
+            card.classList.add("selected");
+            customizationData.fabricType = card.dataset.fabric;
+            saveCustomizationData();
+          });
+        });
+
+        // Color selection
+        colorCircles.forEach((circle) => {
+          circle.addEventListener("click", () => {
+            colorCircles.forEach((c) => c.classList.remove("selected"));
+            circle.classList.add("selected");
+            customizationData.color = circle.dataset.color;
+            saveCustomizationData();
+          });
+        });
+      });
+
+      function proceedToNextStep() {
+        document.querySelector(".progress-completed").style.width = "60%";
+        setTimeout(() => {
+          window.location.href = "/customization/size";
+        }, 500);
+      }
+
+      function goBack() {
+        window.location.href = "/customization/adjust";
+      }
+
+      function saveCustomizationData() {
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+      }
+    </script>
+  </body>
+</html>

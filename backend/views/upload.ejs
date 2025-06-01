@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Your Design | Kurti Customization</title>
+    <link rel="icon" type="image/x-icon" href="/public/images/logo4.png" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .upload-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        padding: 40px;
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .upload-area {
+        border: 3px dashed #e0d4c8;
+        border-radius: 12px;
+        padding: 60px 20px;
+        margin: 30px 0;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .upload-area:hover,
+      .upload-area.dragover {
+        background-color: #f8f3ee;
+        border-color: #9c6644;
+      }
+
+      .upload-icon {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: #9c6644;
+      }
+
+      .upload-text {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #7d5a50;
+      }
+
+      .upload-subtext {
+        font-size: 14px;
+        color: #9c6644;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-outline:hover {
+        background-color: #9c6644;
+        color: white;
+      }
+
+      .preview-container {
+        margin-top: 30px;
+        display: none;
+      }
+
+      .preview-image {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .file-details {
+        font-size: 14px;
+        color: #7d5a50;
+        margin-bottom: 20px;
+      }
+
+      .requirements {
+        background-color: #f8f3ee;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .requirements h3 {
+        color: #9c6644;
+        margin-top: 0;
+      }
+
+      .requirements ul {
+        color: #7d5a50;
+        margin-bottom: 0;
+      }
+
+      .progress-container {
+        margin: 40px auto;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 15%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Upload Your Design</h1>
+        <p class="subtitle">
+          Share your creativity and make your kurti truly one-of-a-kind
+        </p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Upload</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">2</div>
+            <div class="step-label">Adjust</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">3</div>
+            <div class="step-label">Fabric</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">4</div>
+            <div class="step-label">Size</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Review</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="upload-container">
+        <h2>Upload Your Custom Pattern or Design</h2>
+        <p>Share your design idea for your perfect kurti</p>
+
+        <div id="uploadArea" class="upload-area">
+          <div class="upload-icon">📁</div>
+          <p class="upload-text">Drag and drop your files here</p>
+          <p class="upload-subtext">or</p>
+          <input
+            type="file"
+            id="fileInput"
+            style="display: none"
+            accept="image/*"
+          />
+          <button
+            class="btn"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            Browse Files
+          </button>
+        </div>
+
+        <div id="previewContainer" class="preview-container">
+          <h3>Preview</h3>
+          <img
+            id="previewImage"
+            class="preview-image"
+            src=""
+            alt="Design preview"
+          />
+          <div id="fileDetails" class="file-details"></div>
+          <button class="btn" onclick="proceedToNextStep()">
+            Continue with this Design
+          </button>
+          <button class="btn btn-outline" onclick="resetUpload()">
+            Choose Different Design
+          </button>
+        </div>
+
+        <div class="requirements">
+          <h3>Design Requirements</h3>
+          <ul>
+            <li>Accepted formats: JPG, PNG, SVG (max 10MB)</li>
+            <li>Minimum resolution: 1000 x 1000 pixels</li>
+            <li>For best results, use a design with transparent background</li>
+            <li>
+              Avoid busy patterns with small details which may not print clearly
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="actions" style="text-align: center; margin-top: 30px">
+        <a href="/customization/custom" class="btn btn-outline"
+          >Back to Home</a
+        >
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("fileInput");
+      const previewContainer = document.getElementById("previewContainer");
+      const previewImage = document.getElementById("previewImage");
+      const fileDetails = document.getElementById("fileDetails");
+
+      // Initialize customization data from localStorage or create new
+      let customizationData = JSON.parse(
+        localStorage.getItem("kurtiCustomization")
+      ) || {
+        neckDesign: "",
+        sleeveLength: "",
+        kurtiLength: "",
+        fabricType: "Khadi",
+        color: "",
+        customImage: null,
+      };
+
+      // Drag and drop events
+      uploadArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadArea.classList.add("dragover");
+      });
+
+      uploadArea.addEventListener("dragleave", () => {
+        uploadArea.classList.remove("dragover");
+      });
+
+      uploadArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove("dragover");
+
+        if (e.dataTransfer.files.length) {
+          handleFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length) {
+          handleFile(e.target.files[0]);
+        }
+      });
+
+      function handleFile(file) {
+        // Check file type
+        const validTypes = ["image/jpeg", "image/png", "image/svg+xml"];
+        if (!validTypes.includes(file.type)) {
+          alert("Please upload a JPG, PNG, or SVG file.");
+          return;
+        }
+
+        // Check file size (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+          alert("File size must be less than 10MB.");
+          return;
+        }
+
+        // Create preview
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          fileDetails.textContent = `File: ${file.name} (${formatFileSize(
+            file.size
+          )})`;
+          uploadArea.style.display = "none";
+          previewContainer.style.display = "block";
+
+          // Store in customization data
+          customizationData.customImage = {
+            dataUrl: e.target.result,
+            name: file.name,
+            size: file.size,
+            type: file.type,
+          };
+          saveCustomizationData();
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes < 1024) return bytes + " bytes";
+        else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+        else return (bytes / 1048576).toFixed(1) + " MB";
+      }
+
+      function resetUpload() {
+        uploadArea.style.display = "block";
+        previewContainer.style.display = "none";
+        fileInput.value = "";
+        customizationData.customImage = null;
+        saveCustomizationData();
+      }
+
+      function proceedToNextStep() {
+        document.querySelector(".progress-completed").style.width = "30%";
+        setTimeout(() => {
+          window.location.href = "/customization/adjust";
+        }, 500);
+      }
+
+      function saveCustomizationData() {
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+      }
+    </script>
+  </body>
+</html>

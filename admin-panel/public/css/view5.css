@@ -1,0 +1,86 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d4b8a7;
+}
+
+/* Header Styling */
+header {
+    background-color: #493628;
+    color: white;
+    text-align: center;
+    padding: 0;
+    font-size: 20px;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Table Container */
+.table-container {
+    width: 90%;
+    margin: 80px auto 20px;
+    overflow-x: auto;
+   
+    padding: 30px;
+    border-radius: 8px;
+   
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table Header Styling */
+thead {
+    background-color: #7b5c42;
+    color: #391c08;
+    position: auto;
+    top: 40px;
+    z-index: 999;
+}
+
+th, td {
+    border: 1.5px solid #090909;
+    padding: 20px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+/* Alternating Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #cfa6a6;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #b08383;
+}
+
+/* Image Styling */
+td img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

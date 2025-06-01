@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Size Selection | Kurti Customization</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Reusing styles from previous pages */
+      header {
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+
+      .progress-container {
+        margin: 40px auto;
+        max-width: 600px;
+      }
+
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 60%;
+        transition: width 0.3s ease;
+      }
+
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+
+      .size-selection-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(156, 102, 68, 0.1);
+        padding: 40px;
+        margin-top: 30px;
+      }
+
+      .size-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .size-card {
+        border: 2px solid #e0d4c8;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .size-card:hover,
+      .size-card.selected {
+        border-color: #9c6644;
+        box-shadow: 0 4px 10px rgba(156, 102, 68, 0.2);
+      }
+
+      .sleeve-length-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .neck-design-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .size-card h3 {
+        margin: 10px 0;
+        color: #7d5a50;
+      }
+
+      .size-details {
+        font-size: 14px;
+        color: #9c6644;
+        margin-top: 10px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+
+      .btn-outline:hover {
+        background-color: #9c6644;
+        color: white;
+      }
+
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Customize Your Kurti</h1>
+        <p class="subtitle">Select your size, sleeve length, and neck design</p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Upload</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Adjust</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Fabric</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">4</div>
+            <div class="step-label">Size</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">5</div>
+            <div class="step-label">Review</div>
+          </div>
+          <div class="step">
+            <div class="step-circle">6</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="size-selection-container">
+        <h2>Choose Your Kurti Size</h2>
+        <div class="size-grid">
+          <div class="size-card" data-size="XS">
+            <h3>XS</h3>
+            <div class="size-details">32-34 inches</div>
+          </div>
+          <div class="size-card" data-size="S">
+            <h3>S</h3>
+            <div class="size-details">36-38 inches</div>
+          </div>
+          <div class="size-card" data-size="M">
+            <h3>M</h3>
+            <div class="size-details">40-42 inches</div>
+          </div>
+          <div class="size-card" data-size="L">
+            <h3>L</h3>
+            <div class="size-details">44-46 inches</div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 30px">Sleeve Length</h2>
+        <div class="sleeve-length-grid">
+          <div class="size-card" data-sleeve-length="Short">
+            <h3>Short</h3>
+            <div class="size-details">Above Elbow</div>
+          </div>
+          <div class="size-card" data-sleeve-length="Three-Quarter">
+            <h3>Three-Quarter</h3>
+            <div class="size-details">Elbow Length</div>
+          </div>
+          <div class="size-card" data-sleeve-length="Full">
+            <h3>Full</h3>
+            <div class="size-details">Wrist Length</div>
+          </div>
+        </div>
+
+        <h2 style="margin-top: 30px">Neck Design</h2>
+        <div class="neck-design-grid">
+          <div class="size-card" data-neck-design="Round">
+            <h3>Round</h3>
+            <div class="size-details">Classic & Comfortable</div>
+          </div>
+          <div class="size-card" data-neck-design="V-Neck">
+            <h3>V-Neck</h3>
+            <div class="size-details">Elegant & Flattering</div>
+          </div>
+          <div class="size-card" data-neck-design="Boat">
+            <h3>Boat Neck</h3>
+            <div class="size-details">Modern & Stylish</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px">
+          <button class="btn" onclick="proceedToNextStep()">
+            Next: Review Design
+          </button>
+          <button class="btn btn-outline" onclick="goBack()">
+            Back to Fabric Selection
+          </button>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      let customizationData = JSON.parse(
+        localStorage.getItem("kurtiCustomization")
+      ) || {
+        neckDesign: "",
+        sleeveLength: "",
+        kurtiLength: "",
+        fabricType: "",
+        color: "",
+        size: "",
+        customImage: null,
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const sizeCards = document.querySelectorAll(".size-card");
+
+        // Size selection
+        sizeCards.forEach((card) => {
+          card.addEventListener("click", () => {
+            const cardGroup =
+              card.closest(".size-grid") ||
+              card.closest(".sleeve-length-grid") ||
+              card.closest(".neck-design-grid");
+
+            cardGroup
+              .querySelectorAll(".size-card")
+              .forEach((c) => c.classList.remove("selected"));
+            card.classList.add("selected");
+
+            if (cardGroup.classList.contains("size-grid")) {
+              customizationData.size = card.dataset.size;
+            } else if (cardGroup.classList.contains("sleeve-length-grid")) {
+              customizationData.sleeveLength = card.dataset.sleeveLength;
+            } else if (cardGroup.classList.contains("neck-design-grid")) {
+              customizationData.neckDesign = card.dataset.neckDesign;
+            }
+
+            saveCustomizationData();
+          });
+        });
+      });
+
+      function proceedToNextStep() {
+        document.querySelector(".progress-completed").style.width = "75%";
+        setTimeout(() => {
+          window.location.href = "/customization/reviewupload";
+        }, 500);
+      }
+
+      function goBack() {
+        window.location.href = "/customization/fabric";
+      }
+
+      function saveCustomizationData() {
+        localStorage.setItem(
+          "kurtiCustomization",
+          JSON.stringify(customizationData)
+        );
+      }
+    </script>
+  </body>
+</html>

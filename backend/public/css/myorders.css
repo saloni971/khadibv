@@ -1,0 +1,137 @@
+
+      .orders-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .order-card {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+      }
+      .order-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 20px;
+        border-radius: 8px;
+      }
+      .order-details {
+        flex-grow: 1;
+      }
+      .order-status {
+        position: absolute;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .status-delivered {
+        background-color: #e7f5e7;
+        color: #2e7d32;
+      }
+      .status-processing {
+        background-color: #fff3e0;
+        color: #f57c00;
+      }
+      .order-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .order-actions button {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+      }
+      .order-actions button.view-details {
+        background-color: #2196f3;
+      }
+      footer {
+        background: #111;
+        color: #fff;
+        padding: 40px 10%;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .footer-section {
+        width: 22%;
+      }
+
+      .footer-section h3 {
+        color: #ffd700;
+        /* Gold for a premium look */
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin: 8px 0;
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .footer-section ul li a:hover {
+        color: #ffd700;
+      }
+
+      .social-icons {
+        margin-top: 10px;
+      }
+
+      .social-icons a {
+        color: #fff;
+        margin-right: 15px;
+        font-size: 18px;
+        transition: 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #ffd700;
+      }
+
+      .bottom-footer {
+        text-align: center;
+        border-top: 1px solid #555;
+        padding-top: 15px;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .payment-icons img {
+        width: 50px;
+        margin: 5px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .footer-section {
+          width: 48%;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-section {
+          width: 100%;
+        }
+      }
+  

@@ -1,0 +1,244 @@
+/* RESET & FONT */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(120deg, #d4b996, #804000);
+    padding: 25px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 150px !important;
+    transition: background 0.8s ease-in-out, box-shadow 0.6s ease-in-out;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    animation: headerAnimation 15s infinite alternate ease-in-out;
+}
+
+.header-left img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+/* MAIN */
+.checkout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.left-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-section {
+    flex: 1;
+}
+
+/* DELIVERY ADDRESS */
+.delivery-address {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.delivery-address h2 {
+    margin-bottom: 15px;
+}
+
+.address-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.address-card {
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    /* so we can position the Edit button if needed */
+}
+
+.address-card.selected {
+    border-color: #141414;
+}
+
+.address-card input[type='radio'] {
+    margin-top: 5px;
+}
+
+.address-card label {
+    cursor: pointer;
+    flex: 1;
+}
+
+.edit-address-btn {
+    background: #16b0ed;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    /* pushes the button to the right */
+    transition: background 0.3s ease;
+}
+
+.edit-address-btn:hover {
+    background: #114dda;
+}
+
+.add-address-btn {
+    background: #ff5733;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-address-btn:hover {
+    background: #114dda;
+}
+
+/* ORDER SUMMARY */
+.order-summary {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.order-summary h2 {
+    margin-bottom: 15px;
+}
+
+.order-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.order-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* PAYMENT OPTIONS */
+.payment-options {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.payment-options h2 {
+    margin-bottom: 15px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.confirm-payment-btn {
+    background: #16b0ed;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.confirm-payment-btn:hover {
+    background: #114dda;
+}
+
+/* PRICE DETAILS */
+.price-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.price-details h2 {
+    margin-bottom: 15px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.price-row.total {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.savings {
+    color: #388e3c;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+
+/* FOOTER */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}

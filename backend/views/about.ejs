@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/pages/public/images/logo4.png"
+    />
+    <link
+      href="https:/fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>KhadiBV - About Us</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #804000;
+        padding: 5px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: sticky;
+        justify-content: space-between;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        height: 140px;
+      }
+
+      header .logo img {
+        width: 25%;
+        height: 25%;
+        align-items: flex-start;
+        display: flex;
+        position: relative;
+        border-radius: 500%;
+        margin-top: 8px;
+      }
+
+      header .logo {
+        position: absolute;
+        top: 0.2%;
+        left: 10px;
+      }
+
+      header .search-bar {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin: 0 10px;
+        width: 60%;
+      }
+
+      header .search-bar input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        /* border-radius: 15px 15px 15px 15px; */
+        font-size: 1em;
+      }
+
+      header .logo p1 {
+        font-size: 0.5em;
+        color: azure;
+        margin: 0;
+        padding: 0;
+      }
+
+      header nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      header nav ul li {
+        margin-left: 20px;
+      }
+
+      header nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      .icons {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .icons span {
+        margin-left: 15px;
+        color: white;
+        cursor: pointer;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .about-section {
+        margin-bottom: 40px;
+      }
+
+      .about-section h2 {
+        font-size: 2em;
+        color: #643b3b;
+        margin-bottom: 10px;
+      }
+
+      .about-section p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      footer {
+        background-color: #804000;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="/public/images/logo4.png"
+          alt="Khadi Store Logo"
+          height="1%"
+          width="1%"
+        />
+      </div>
+      <div class="search-bar">
+        <input
+          type="text"
+          placeholder="Search for products, categories, or brands"
+        />
+        <span class="material-icons" id="search-icon" title="Search"
+          >search</span
+        >
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/views/html/index.html">Home</a></li>
+          <li><a href="#categories">Shop</a></li>
+          <li><a href="/views/html/about.html">About</a></li>
+          <li>
+            <a href="/views/html/index.html" id="contact-link">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <!-- <span class="material-icons" id="search-icon" title="Search"
+            >search</span
+          > -->
+        <span class="material-icons" id="cart-icon" title="Cart"
+          ><a href="/views/html/cart.html">shopping_cart</a></span
+        >
+        <span class="material-icons" id="wishlist-icon" title="Wishlist"
+          ><a href="/views/html/wishlist.html">favorite_border</a></span
+        >
+        <span class="material-icons" id="login-icon" title="Login/Signup"
+          ><a href="/views/html/signup.html"> account_circle </a></span
+        >
+        <span
+          class="material-icons"
+          id="notifications-icon"
+          title="Notifications"
+          >notifications</span
+        >
+        <span class="material-icons" id="chatbot-icon" title="Chatbox"
+          >chat</span
+        >
+      </div>
+    </header>
+
+    <main>
+      <section class="about-section">
+        <h2>What is Khadi?</h2>
+        <p>
+          Khadi is a hand-spun and handwoven natural fiber cloth, originating
+          from India. Known for its eco-friendly production process, Khadi
+          represents simplicity, sustainability, and self-reliance.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Importance of Khadi</h2>
+        <p>
+          Khadi is more than just a fabric; it is a symbol of India's freedom
+          struggle and Gandhian principles. Its production supports rural
+          artisans, reduces carbon footprint, and promotes sustainable fashion.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>History of Khadi</h2>
+        <p>
+          Khadi became a movement during India’s independence struggle,
+          spearheaded by Mahatma Gandhi. It encouraged self-reliance and
+          boycotting foreign goods, becoming a powerful tool for economic and
+          social transformation.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Why Wear Khadi?</h2>
+        <p>
+          Wearing Khadi is a statement of support for sustainable practices and
+          rural livelihoods. It is breathable, skin-friendly, and versatile,
+          making it ideal for all seasons and occasions.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>How is Khadi Made?</h2>
+        <p>
+          Khadi is crafted through a meticulous process of spinning cotton,
+          silk, or wool into yarn using a charkha (spinning wheel), followed by
+          weaving it into fabric on a handloom. This process is entirely manual,
+          requiring skill and patience.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Benefits of Khadi</h2>
+        <p>
+          Khadi is biodegradable, eco-friendly, and hypoallergenic. It supports
+          local artisans, reduces energy consumption, and offers unique textures
+          and patterns that machine-made fabrics cannot replicate.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>Our Mission</h2>
+        <p>
+          At KhadiBV, we aim to revive the heritage of Khadi by making it
+          accessible and appealing to modern consumers. We strive to empower
+          artisans, promote sustainable fashion, and spread awareness about the
+          importance of eco-friendly practices.
+        </p>
+      </section>
+
+      <section class="about-section">
+        <h2>FAQs</h2>
+        <p>
+          <strong>Q: Is Khadi only made in India?</strong><br />A: Yes,
+          authentic Khadi is handwoven in India by skilled artisans.
+        </p>
+        <p>
+          <strong>Q: Can Khadi be worn in all seasons?</strong><br />A:
+          Absolutely! Khadi’s breathable nature makes it suitable for summer,
+          while its insulating properties keep you warm in winter.
+        </p>
+        <p>
+          <strong>Q: How do I care for Khadi garments?</strong><br />A: Handwash
+          your Khadi clothes in cold water with mild detergent and dry them in
+          the shade to maintain their texture and longevity.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 KhadiBV | Made with Passion and Khadi</p>
+    </footer>
+  </body>
+</html>

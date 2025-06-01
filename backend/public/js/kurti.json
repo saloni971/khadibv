@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "Elegant Khadi Kurti",
+  "description": "This elegant khadi kurti is handwoven and perfect for casual and formal occasions. Made with sustainable materials for maximum comfort and style.",
+  "price": 1200,
+  "images": [
+    "assets/kurti1.jpg",
+    "assets/kurti2.jpg",
+    "assets/kurti3.jpg"
+  ]
+}

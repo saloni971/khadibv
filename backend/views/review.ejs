@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review - Kurti Customization</title>
+    <style>
+      /* Basic Reset & Shared Styles */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f3ee;
+        color: #4a3933;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      header {
+        text-align: center;
+        padding: 20px 0;
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #9c6644;
+      }
+      .subtitle {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #7d5a50;
+      }
+      /* Progress Bar Styles */
+      .progress-container {
+        margin: 20px auto 40px;
+        max-width: 600px;
+      }
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #e0d4c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 10px;
+      }
+      .step-label {
+        font-size: 14px;
+        color: #7d5a50;
+      }
+      .progress-bar {
+        height: 6px;
+        background-color: #e0d4c8;
+        border-radius: 3px;
+        position: relative;
+      }
+      .progress-completed {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: #9c6644;
+        border-radius: 3px;
+        width: 100%;
+        transition: width 0.3s ease;
+      }
+      .active .step-circle {
+        background-color: #9c6644;
+      }
+      /* Review Container */
+      .review-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(156, 102, 68, 0.1);
+        padding: 30px;
+        margin-top: 40px;
+      }
+      .review-section {
+        margin-bottom: 20px;
+      }
+      .review-section h3 {
+        font-size: 20px;
+        color: #9c6644;
+        margin-bottom: 10px;
+      }
+      .review-section p {
+        font-size: 16px;
+        color: #4a3933;
+        margin: 5px 0;
+      }
+      /* Navigation Buttons */
+      .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #9c6644;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .btn:hover {
+        background-color: #7d5a50;
+      }
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid #9c6644;
+        color: #9c6644;
+      }
+      .btn-secondary:hover {
+        background-color: rgba(156, 102, 68, 0.1);
+      }
+      footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 14px;
+        color: #7d5a50;
+        padding: 20px;
+      }
+      /* Color Swatch */
+      #reviewColorSwatch {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Review Your Customization</h1>
+        <p class="subtitle">Check your selections before proceeding</p>
+      </header>
+
+      <div class="progress-container">
+        <div class="progress-steps">
+          <div class="step active">
+            <div class="step-circle">1</div>
+            <div class="step-label">Start</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">2</div>
+            <div class="step-label">Neck</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">3</div>
+            <div class="step-label">Sleeve</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">4</div>
+            <div class="step-label">Length</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">5</div>
+            <div class="step-label">Color</div>
+          </div>
+          <div class="step active">
+            <div class="step-circle">6</div>
+            <div class="step-label">Review</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-completed"></div>
+        </div>
+      </div>
+
+      <div class="review-container">
+        <div class="review-section">
+          <h3>Neck Design</h3>
+          <p id="reviewNeck">-</p>
+        </div>
+        <div class="review-section">
+          <h3>Sleeve Length</h3>
+          <p id="reviewSleeve">-</p>
+        </div>
+        <div class="review-section">
+          <h3>Kurti Length</h3>
+          <p id="reviewLength">-</p>
+        </div>
+        <div class="review-section">
+          <h3>Fabric Type</h3>
+          <p id="reviewFabric">Khadi</p>
+        </div>
+        <div class="review-section">
+          <h3>Color</h3>
+          <p id="reviewColor">-</p>
+          <div id="reviewColorSwatch"></div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <a href="color.html" class="btn btn-secondary">Back</a>
+        <button id="submitButton" class="btn" onclick="submitCustomization()">
+          Submit
+        </button>
+      </div>
+
+      <footer>
+        <p>© 2025 Kurti Customization. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script>
+      // Load customization data from localStorage
+      let customizationData;
+      try {
+        const savedData = localStorage.getItem("kurtiCustomization");
+        customizationData = savedData
+          ? JSON.parse(savedData)
+          : {
+              neckDesign: "",
+              sleeveLength: "",
+              kurtiLength: "",
+              fabricType: "Khadi",
+              color: "",
+              colorName: "",
+            };
+      } catch (e) {
+        customizationData = {
+          neckDesign: "",
+          sleeveLength: "",
+          kurtiLength: "",
+          fabricType: "Khadi",
+          color: "",
+          colorName: "",
+        };
+      }
+
+      // Update review sections with loaded data
+      document.getElementById("reviewNeck").textContent =
+        customizationData.neckDesign || "-";
+      document.getElementById("reviewSleeve").textContent =
+        customizationData.sleeveLength || "-";
+      document.getElementById("reviewLength").textContent =
+        customizationData.kurtiLength || "-";
+      document.getElementById("reviewFabric").textContent =
+        customizationData.fabricType || "Khadi";
+
+      if (customizationData.color) {
+        document.getElementById("reviewColor").textContent =
+          customizationData.colorName || customizationData.color;
+        document.getElementById("reviewColorSwatch").style.backgroundColor =
+          customizationData.color;
+      } else {
+        document.getElementById("reviewColor").textContent = "-";
+      }
+
+      // Function to simulate submission or further processing
+      function submitCustomization() {
+    fetch("/customization/getSession")  // Create a backend route to return session data
+    .then(response => response.json())
+    .then(session => {
+        if (!session.userId) {
+            console.error("Error: userId not found in session");
+            alert("Session expired. Please log in again.");
+            return;
+        }
+
+        const customizationData = {
+            userId: session.userId,  // Use session-stored userId
+            neckDesign: localStorage.getItem("kurtiCustomization")
+                ? JSON.parse(localStorage.getItem("kurtiCustomization")).neckDesign
+                : "",
+            sleeveLength: localStorage.getItem("kurtiCustomization")
+                ? JSON.parse(localStorage.getItem("kurtiCustomization")).sleeveLength
+                : "",
+            kurtiLength: localStorage.getItem("kurtiCustomization")
+                ? JSON.parse(localStorage.getItem("kurtiCustomization")).kurtiLength
+                : "",
+            fabricType: "Khadi",
+            color: localStorage.getItem("kurtiCustomization")
+                ? JSON.parse(localStorage.getItem("kurtiCustomization")).color
+                : "",
+            colorName: localStorage.getItem("kurtiCustomization")
+                ? JSON.parse(localStorage.getItem("kurtiCustomization")).colorName
+                : ""
+        };
+
+        console.log("Sending Data:", customizationData);
+
+        fetch("/customization/submitCustomization", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(customizationData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            window.location.href = "/customization/complete";
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Failed to save customization.");
+        });
+    })
+    .catch(error => {
+        console.error("Session fetch error:", error);
+        alert("Could not retrieve session. Please log in again.");
+    });
+}
+
+    </script>
+  </body>
+</html>

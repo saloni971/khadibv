@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="/public/css/signup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Khadi Store - Signup</h1>
+    </header>
+
+    <section id="signup">
+      <form id="signup-form" onsubmit="submitForm(event)">
+        <!-- Step 1: Signup Details -->
+        <div id="step-1" class="form-step">
+          <h2>Step 1: Signup Details</h2>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+            />
+          </div>
+          <button type="button" onclick="goToStep(2)">Next</button>
+        </div>
+
+        <!-- Step 2: Security Questions -->
+        <div id="step-2" class="form-step" style="display: none">
+          <h2>Step 2: Security Questions</h2>
+          <div class="form-group">
+            <label for="security-question-1">Security Question 1:</label>
+            <select
+              id="security-question-1"
+              name="security-question-1"
+              required
+            >
+              <option value="">Select a question</option>
+              <option value="pet">What is the name of your first pet?</option>
+              <option value="school">
+                What is the name of your primary school?
+              </option>
+              <option value="city">What city were you born in?</option>
+            </select>
+            <input
+              type="text"
+              id="answer-1"
+              name="answer-1"
+              placeholder="Your Answer"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="security-question-2">Security Question 2:</label>
+            <select
+              id="security-question-2"
+              name="security-question-2"
+              required
+            >
+              <option value="">Select a question</option>
+              <option value="mother">What is your mother's maiden name?</option>
+              <option value="movie">What is your favorite movie?</option>
+              <option value="teacher">Who was your favorite teacher?</option>
+            </select>
+            <input
+              type="text"
+              id="answer-2"
+              name="answer-2"
+              placeholder="Your Answer"
+              required
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Khadi Store</p>
+    </footer>
+
+    <script src="/public/js/signup.js"></script>
+  </body>
+</html>
+

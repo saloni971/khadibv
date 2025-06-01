@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/css/cart.css" /> <!-- Updated path -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img
+            src="/public/images/logo4.png"
+            alt="Khadi Store Logo"
+            height="1%"
+            width="1%"
+          />
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search for products, categories, or brands"
+          />
+          <span class="material-icons" id="search-icon" title="Search"
+            >search</span
+          >
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#categories">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" id="contact-link">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="icons">
+          <span class="material-icons" id="cart-icon" title="Cart"
+            ><a href="/cart">shopping_cart</a></span
+          >
+          <span class="material-icons" id="wishlist-icon" title="Wishlist"
+            ><a href="/wishlist">favorite_border</a></span
+          >
+  
+          <% if (user) { %>
+          <!-- User is logged in -->
+          <div class="profile-dropdown">
+            <span
+              class="material-icons"
+              id="profile-icon"
+              title="Profile"
+            >
+              account_circle
+            </span>
+            <div class="dropdown-content">
+              <p>Welcome, <%= user.name %>!</p>
+              <a href="/settings">settings</a>
+              <a href="/orders">My Orders</a>
+              <a href="/logout">Logout</a>
+            </div>
+          </div>
+          <% } else { %>
+          <!-- User is not logged in -->
+          <span class="material-icons" id="login-icon" title="Login/Signup">
+            <a href="/signup">account_circle</a>
+          </span>
+          <% } %>
+  
+          <span
+            class="material-icons"
+            id="notifications-icon"
+            title="Notifications"
+            >notifications</span
+          >
+          <span class="material-icons" id="chatbot-icon" title="Chatbox"
+            >chat</span
+          >
+        </div>
+      </header>
+
+    <section id="cart">
+        <h2>Items in Your Cart</h2>
+        <div id="cart-items">
+            <% if (cart && cart.length > 0) { %>
+                <% let totalPrice = 0; %>
+                <% cart.forEach(item => { %>
+                    <div class="cart-item">
+                        <img src="/images/<%= item.productID.images[0] %>" alt="<%= item.name %>" />
+                        <div class="cart-item-details">
+                            <h3><%= item.name %></h3>
+                            <p>Price: ₹<%= item.price.toFixed(2) %></p>
+                            <p>Quantity: <%= item.quantity %></p>
+                        </div>
+                        <button class="remove-btn" data-id="<%= item._id %>">Remove</button>
+                        <% totalPrice += (item.price * item.quantity); %>
+                    </div>
+                <% }); %>
+                <p id="total-price">Total Price: ₹<%= totalPrice.toFixed(2) %></p>
+                
+                <!-- Buttons for further procedure -->
+                <div class="cart-buttons">
+                    <a href="/" class="btn continue-shopping">Continue Shopping</a>
+                    <a href="/checkout" class="btn proceed-checkout">Proceed to Checkout</a>
+                </div>
+
+            <% } else { %>
+                <p>Your cart is empty.</p>
+            <% } %>
+        </div>
+    </section>
+
+    <script src="/js/cart.js"></script> <!-- Updated path -->
+
+</body>
+</html>
